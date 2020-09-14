@@ -1,4 +1,4 @@
-package com.lwang.smilejetpack.data;
+package com.lwang.smilejetpack.data.source;
 
 import io.reactivex.Observable;
 

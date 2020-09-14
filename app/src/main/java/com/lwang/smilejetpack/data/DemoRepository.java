@@ -1,5 +1,8 @@
 package com.lwang.smilejetpack.data;
 
+import com.lwang.smilejetpack.data.source.HttpDataSource;
+import com.lwang.smilejetpack.data.source.LocalDataSource;
+
 import io.reactivex.Observable;
 import me.goldze.mvvmhabit.base.BaseModel;
 
@@ -8,7 +11,7 @@ import me.goldze.mvvmhabit.base.BaseModel;
  * @Date 2020/9/11 17:01
  * @Description
  */
-public class DemoRepository extends BaseModel implements HttpDataSource, LocalDataSource{
+public class DemoRepository extends BaseModel implements HttpDataSource, LocalDataSource {
 
 
     @Override
