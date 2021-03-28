@@ -1,4 +1,4 @@
-package com.lwang.smilejetpack.data.source.http.service;
+package com.lwang.smilejetpack.data.http;
 
 import com.lwang.smilejetpack.entity.DemoEntity;
 

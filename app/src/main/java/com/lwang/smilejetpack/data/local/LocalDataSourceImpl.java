@@ -1,6 +1,4 @@
-package com.lwang.smilejetpack.data.source.local;
-
-import com.lwang.smilejetpack.data.source.LocalDataSource;
+package com.lwang.smilejetpack.data.local;
 
 import me.goldze.mvvmhabit.utils.SPUtils;
 
