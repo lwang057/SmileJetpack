@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.lwang.smilejetpack.ui.network.NetWorkViewModel" />
+
+        <variable
+            name="viewModel"
+            type="NetWorkViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<!--        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout-->
+<!--            android:id="@+id/twinklingRefreshLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            binding:onLoadMoreCommand="@{viewModel.onLoadMoreCommand}"-->
+<!--            binding:onRefreshCommand="@{viewModel.onRefreshCommand}"-->
+<!--            binding:tr_head_height="80dp"-->
+<!--            binding:tr_wave_height="80dp">-->
+
+<!--        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>-->
+
+    </LinearLayout>
+</layout>

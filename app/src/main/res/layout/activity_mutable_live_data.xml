@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".demo.livedata_viewmodel.MutableLiveDataActivity">
+
+        <fragment
+            android:id="@+id/fragmentOne"
+            android:name="com.lwang.smilejetpack.demo.livedata_viewmodel.MutableLiveDataFragmentOne"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary" />
+
+        <fragment
+            android:id="@+id/fragmentTwo"
+            android:name="com.lwang.smilejetpack.demo.livedata_viewmodel.MutableLiveDataFragmentTwo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+</layout>
