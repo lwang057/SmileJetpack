@@ -58,7 +58,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
         if (viewModel != null) {
             viewModel.removeRxBus();
         }
-        if(binding != null){
+        if (binding != null) {
             binding.unbind();
         }
     }
@@ -69,8 +69,12 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
     private void initViewDataBinding(Bundle savedInstanceState) {
         //DataBindingUtil类需要在project的build中配置 dataBinding {enabled true }, 同步后会自动关联android.databinding包
         binding = DataBindingUtil.setContentView(this, initContentView(savedInstanceState));
+
+
         viewModelId = initVariableId();
         viewModel = initViewModel();
+
+        //创建ViewModel
         if (viewModel == null) {
             Class modelClass;
             Type type = getClass().getGenericSuperclass();
@@ -82,12 +86,20 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
             }
             viewModel = (VM) createViewModel(this, modelClass);
         }
+
+
         //关联ViewModel
         binding.setVariable(viewModelId, viewModel);
+
+
         //支持LiveData绑定xml，数据改变，UI自动会更新
         binding.setLifecycleOwner(this);
+
+
         //让ViewModel拥有View的生命周期感应
         getLifecycle().addObserver(viewModel);
+
+
         //注入RxLifecycle生命周期
         viewModel.injectLifecycleProvider(this);
     }
@@ -105,6 +117,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
      **/
     //注册ViewModel与View的契约UI回调事件
     protected void registorUIChangeLiveDataCallBack() {
+
         //加载对话框显示
         viewModel.getUC().getShowDialogEvent().observe(this, new Observer<String>() {
             @Override
@@ -112,6 +125,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
                 showDialog(title);
             }
         });
+
         //加载对话框消失
         viewModel.getUC().getDismissDialogEvent().observe(this, new Observer<Void>() {
             @Override
@@ -119,6 +133,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
                 dismissDialog();
             }
         });
+
         //跳入新页面
         viewModel.getUC().getStartActivityEvent().observe(this, new Observer<Map<String, Object>>() {
             @Override
@@ -128,6 +143,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
                 startActivity(clz, bundle);
             }
         });
+
         //跳入ContainerActivity
         viewModel.getUC().getStartContainerActivityEvent().observe(this, new Observer<Map<String, Object>>() {
             @Override
@@ -137,6 +153,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
                 startContainerActivity(canonicalName, bundle);
             }
         });
+
         //关闭界面
         viewModel.getUC().getFinishEvent().observe(this, new Observer<Void>() {
             @Override
@@ -144,6 +161,7 @@ public abstract class BaseActivity<V extends ViewDataBinding, VM extends BaseVie
                 finish();
             }
         });
+
         //关闭上一层
         viewModel.getUC().getOnBackPressedEvent().observe(this, new Observer<Void>() {
             @Override

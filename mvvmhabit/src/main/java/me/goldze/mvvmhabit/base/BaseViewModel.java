@@ -40,6 +40,10 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
         mCompositeDisposable = new CompositeDisposable();
     }
 
+
+
+
+
     protected void addSubscribe(Disposable disposable) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
@@ -194,6 +198,11 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
         addSubscribe(disposable);
     }
 
+
+    /**
+     * 自定义的liveData 继承MutableLiveData
+     * 通过包装数据来进行，实时数据共享，数据变化时可以实时知晓
+     */
     public final class UIChangeLiveData extends SingleLiveEvent {
         private SingleLiveEvent<String> showDialogEvent;
         private SingleLiveEvent<Void> dismissDialogEvent;
@@ -225,6 +234,10 @@ public class BaseViewModel<M extends BaseModel> extends AndroidViewModel impleme
         public SingleLiveEvent<Void> getOnBackPressedEvent() {
             return onBackPressedEvent = createLiveData(onBackPressedEvent);
         }
+
+
+
+
 
         private <T> SingleLiveEvent<T> createLiveData(SingleLiveEvent<T> liveData) {
             if (liveData == null) {

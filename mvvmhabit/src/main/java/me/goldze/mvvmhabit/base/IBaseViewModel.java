@@ -8,6 +8,9 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 /**
  * Created by goldze on 2017/6/15.
+ *
+ * 继承LifecycleObserver创建一个观察者，采用注解方式表明这个方法是在那个生命周期里回调
+ * 最后在需要监听它生命周期的activity中加入getLifecycle().addObserver( xxx )
  */
 
 public interface IBaseViewModel extends LifecycleObserver {

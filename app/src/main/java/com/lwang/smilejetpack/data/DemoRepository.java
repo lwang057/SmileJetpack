@@ -15,6 +15,7 @@ import me.goldze.mvvmhabit.http.BaseResponse;
  * @Author lwang
  * @Date 2020/9/11 17:01
  * @Description MVVM的Model层，统一模块的数据仓库，包含网络数据和本地数据（一个应用可以有多个Repository）
+ * 介于 model 与 viewModel 之间，它只对viewModel层负责，让viewModel只需要关心自己的业务逻辑，而不用再关心数据的具体来源（数据来源一般两种：Local数据库，Remote网络请求）
  */
 public class DemoRepository extends BaseModel implements HttpDataSource, LocalDataSource {
 
