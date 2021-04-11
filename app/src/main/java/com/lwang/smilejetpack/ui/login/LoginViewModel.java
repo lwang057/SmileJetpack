@@ -9,8 +9,8 @@ import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
 
 import com.lwang.smilejetpack.data.DemoRepository;
+import com.lwang.smilejetpack.ui.home.HomeActivity;
 
-import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import me.goldze.mvvmhabit.base.BaseViewModel;
@@ -116,11 +116,8 @@ public class LoginViewModel extends BaseViewModel<DemoRepository> {
                         model.savePassword(passWord.get());
 
 
-                        showDialog("success");
-                        dismissDialog();
-
-//                        startActivity(Demoac);
-//                        finish();
+                        startActivity(HomeActivity.class);
+                        finish();
                     }
                 }));
     }

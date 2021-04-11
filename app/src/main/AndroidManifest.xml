@@ -22,6 +22,7 @@
         <activity android:name=".demo.databinding_recyclerview.RecycleViewActivity" />
         <activity android:name=".demo.databinding_twowaybind.TwoWayBindingActivity" />
         <activity android:name=".demo.databinding.BookActivity" />
+        <activity android:name=".ui.tab_bar.TabBarActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>

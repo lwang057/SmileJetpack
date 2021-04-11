@@ -12,7 +12,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.lwang.smilejetpack.R;
 import com.lwang.smilejetpack.databinding.FragmentMutableLiveDataOneBinding;
@@ -33,7 +33,7 @@ public class MutableLiveDataFragmentOne extends Fragment {
 
 
         // 获取viewModel
-        MutableLiveDataShareViewModel mutableLiveDataShareViewModel = new ViewModelProvider(this.getActivity()).get(MutableLiveDataShareViewModel.class);
+        MutableLiveDataShareViewModel mutableLiveDataShareViewModel = ViewModelProviders.of(this.getActivity()).get(MutableLiveDataShareViewModel.class);
 
         // 通过viewModel拿到liveData封装的数据
         final MutableLiveData<Integer> liveData = (MutableLiveData<Integer>) mutableLiveDataShareViewModel.getProgress();
