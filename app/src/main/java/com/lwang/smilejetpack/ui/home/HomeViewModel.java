@@ -1,9 +1,12 @@
 package com.lwang.smilejetpack.ui.home;
 
 import android.app.Application;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import com.lwang.smilejetpack.entity.FormEntity;
+import com.lwang.smilejetpack.ui.form.FormFragment;
 import com.lwang.smilejetpack.ui.network.NetWorkFragment;
 import com.lwang.smilejetpack.ui.tab_bar.TabBarActivity;
 
@@ -19,16 +22,13 @@ import me.goldze.mvvmhabit.bus.event.SingleLiveEvent;
  */
 public class HomeViewModel extends BaseViewModel {
 
+    public SingleLiveEvent<Boolean> requestCameraPermissions = new SingleLiveEvent<>();
+    public SingleLiveEvent<String> loadUrlEvent = new SingleLiveEvent<>();
+
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
     }
-
-
-    public SingleLiveEvent<Boolean> requestCameraPermissions = new SingleLiveEvent<>();
-
-
-    public SingleLiveEvent<String> loadUrlEvent = new SingleLiveEvent<>();
 
 
     /**
@@ -92,7 +92,7 @@ public class HomeViewModel extends BaseViewModel {
     public BindingCommand formSbmClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
+            startContainerActivity(FormFragment.class.getCanonicalName());
         }
     });
 
@@ -103,7 +103,17 @@ public class HomeViewModel extends BaseViewModel {
     public BindingCommand formModifyClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
+            //模拟一个修改的实体数据
+            FormEntity entity = new FormEntity();
+            entity.setId("666666");
+            entity.setName("周杰伦");
+            entity.setSex("1");
+            entity.setBir("1988年08月08日");
+            entity.setMarry(true);
 
+            Bundle mBundle = new Bundle();
+            mBundle.putParcelable("entity", entity);
+            startContainerActivity(FormFragment.class.getCanonicalName(), mBundle);
         }
     });
 
