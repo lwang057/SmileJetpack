@@ -83,7 +83,7 @@ public class HomeViewModel extends BaseViewModel {
     public BindingCommand viewPagerGroupBindingClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
+            startContainerActivity(ViewPagerGroupFragment.class.getCanonicalName());
         }
     });
 

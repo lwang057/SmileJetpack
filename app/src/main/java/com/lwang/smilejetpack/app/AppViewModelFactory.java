@@ -10,9 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.lwang.smilejetpack.data.DemoRepository;
 import com.lwang.smilejetpack.ui.login.LoginViewModel;
-import com.lwang.smilejetpack.ui.network.NetWorkViewModel;
-
-import me.goldze.mvvmhabit.http.NetworkUtil;
+import com.lwang.smilejetpack.ui.network.vm.NetWorkViewModel;
 
 /**
  * @Author lwang
