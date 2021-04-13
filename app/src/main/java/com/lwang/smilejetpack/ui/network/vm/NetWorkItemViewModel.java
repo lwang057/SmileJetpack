@@ -1,6 +1,7 @@
 package com.lwang.smilejetpack.ui.network.vm;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -8,6 +9,7 @@ import androidx.databinding.ObservableField;
 
 import com.lwang.smilejetpack.R;
 import com.lwang.smilejetpack.entity.DemoEntity;
+import com.lwang.smilejetpack.ui.network.detail.DetailFragment;
 
 import me.goldze.mvvmhabit.base.ItemViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -41,6 +43,10 @@ public class NetWorkItemViewModel extends ItemViewModel<NetWorkViewModel> {
         @Override
         public void call() {
 
+            //跳转到详情界面,传入条目的实体对象
+            Bundle mBundle = new Bundle();
+            mBundle.putParcelable("entity", entity.get());
+            viewModel.startContainerActivity(DetailFragment.class.getCanonicalName(), mBundle);
         }
     });
 
