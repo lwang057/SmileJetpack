@@ -9,6 +9,8 @@ import com.lwang.smilejetpack.entity.FormEntity;
 import com.lwang.smilejetpack.ui.form.FormFragment;
 import com.lwang.smilejetpack.ui.network.NetWorkFragment;
 import com.lwang.smilejetpack.ui.tab_bar.TabBarActivity;
+import com.lwang.smilejetpack.ui.viewpager.ViewPagerActivity;
+import com.lwang.smilejetpack.ui.viewpager_fragment.ViewPagerGroupFragment;
 
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.goldze.mvvmhabit.binding.command.BindingAction;
@@ -70,7 +72,7 @@ public class HomeViewModel extends BaseViewModel {
     public BindingCommand viewPagerBindingClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
+            startActivity(ViewPagerActivity.class);
         }
     });
 
