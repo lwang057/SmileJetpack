@@ -1,5 +1,6 @@
 package com.lwang.smilejetpack.ui.network;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -8,17 +9,23 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.lwang.smilejetpack.BR;
 import com.lwang.smilejetpack.R;
 import com.lwang.smilejetpack.app.AppViewModelFactory;
 import com.lwang.smilejetpack.databinding.FragmentNetWorkBinding;
 import com.lwang.smilejetpack.ui.network.adapter.NetWorkRecyclerViewBindingAdapter;
+import com.lwang.smilejetpack.ui.network.vm.NetWorkItemViewModel;
 import com.lwang.smilejetpack.ui.network.vm.NetWorkViewModel;
 
 import me.goldze.mvvmhabit.base.BaseFragment;
+import me.goldze.mvvmhabit.utils.MaterialDialogUtils;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 
 public class NetWorkFragment extends BaseFragment<FragmentNetWorkBinding, NetWorkViewModel> {
 
@@ -84,6 +91,31 @@ public class NetWorkFragment extends BaseFragment<FragmentNetWorkBinding, NetWor
                 binding.twinklingRefreshLayout.finishLoadmore();
             }
         });
+
+
+        //监听删除条目
+        viewModel.deleteItemData.observe(this, new Observer<NetWorkItemViewModel>() {
+            @Override
+            public void onChanged(final NetWorkItemViewModel netWorkItemViewModel) {
+                int itemPosition = viewModel.getItemPosition(netWorkItemViewModel);
+
+                MaterialDialogUtils.showBasicDialog(getContext(), "提示", "是否删除【" + netWorkItemViewModel.entity.get().getName() + "】？ position：" + itemPosition)
+                        .onNegative(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                ToastUtils.showShort("取消");
+                            }
+                        })
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                viewModel.deleteItem(netWorkItemViewModel);
+                            }
+                        })
+                        .show();
+            }
+        });
+
     }
 
 

@@ -31,7 +31,9 @@ import me.tatarka.bindingcollectionadapter2.ItemBinding;
  */
 public class NetWorkViewModel extends BaseViewModel<DemoRepository> {
 
-    //给RecyclerView添加ObservableList
+    //item发生删除的观察者
+    public SingleLiveEvent<NetWorkItemViewModel> deleteItemData = new SingleLiveEvent<>();
+    //给RecyclerView添加ObservableList数据源
     public ObservableList<NetWorkItemViewModel> observableList = new ObservableArrayList();
     //封装一个界面发生改变的观察者
     public UIChangeObservable uc = new UIChangeObservable();

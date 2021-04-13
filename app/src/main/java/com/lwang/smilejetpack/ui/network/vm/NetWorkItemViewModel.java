@@ -57,9 +57,7 @@ public class NetWorkItemViewModel extends ItemViewModel<NetWorkViewModel> {
     public BindingCommand itemLongClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-//            ToastUtils.showShort(entity.get().getName());
-
-            viewModel.deleteItem(NetWorkItemViewModel.this);
+            viewModel.deleteItemData.setValue(NetWorkItemViewModel.this);
         }
     });
 
