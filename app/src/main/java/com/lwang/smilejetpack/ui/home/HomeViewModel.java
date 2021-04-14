@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.lwang.smilejetpack.entity.FormEntity;
 import com.lwang.smilejetpack.ui.form.FormFragment;
+import com.lwang.smilejetpack.ui.multi_rv.MultiRecycleViewFragment;
 import com.lwang.smilejetpack.ui.network.NetWorkFragment;
 import com.lwang.smilejetpack.ui.tab_bar.TabBarActivity;
 import com.lwang.smilejetpack.ui.viewpager.ViewPagerActivity;
@@ -50,7 +51,7 @@ public class HomeViewModel extends BaseViewModel {
     public BindingCommand rvMultiClick = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-
+            startContainerActivity(MultiRecycleViewFragment.class.getCanonicalName());
         }
     });
 
